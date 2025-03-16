@@ -9,26 +9,28 @@
   \___/_| |_|_| \___/\____/|_| |_|\__,_|\__\___|_| |_|
 ```
 
-## 🔍 About InfoSnatch
-**InfoSnatch** is a high-speed security tool designed for monitoring, capturing, and analyzing system activity. It helps with real-time logging, automated alerts, and provides useful insights for security professionals.
 
-## ⚡ Features
-- 📡 **Real-time Monitoring** – Tracks system activity instantly.
-- 🔔 **Automated Alerts** – Sends notifications on suspicious actions.
-- 🖥 **Lightweight** – Optimized for minimal system impact.
-- 🔍 **Data Analysis** – Helps in forensic investigation and log management.
+# InfoSnatch
 
-## 🚀 Installation
+InfoSnatch is a powerful tool designed to gather real-time information about users, including their IP address, live location, device details, and even capture an image from their camera (with permission).
+
+## Features
+- ✅ **IP Address Tracking** - Retrieves the public IP of the user.
+- ✅ **Live Geolocation** - Fetches approximate location using IP-based geolocation.
+- ✅ **Device Information** - Captures browser and OS details.
+- ✅ **Camera Access** - Captures an image from the user's webcam.
+
+## Installation
 ```bash
-git clone https://github.com/your-username/InfoSnatch.git
+git clone https://github.com/yourusername/InfoSnatch.git
 cd InfoSnatch
+pip install -r requirements.txt
 ```
 
-## 🛠 Usage
+## Usage
 ```bash
-python infosnatch.py
+python app.py
 ```
 
-## 🤝 Contributing
-Pull requests are welcome! Feel free to open an issue for discussions.
-
+## Disclaimer
+This tool is meant for educational and security research purposes only. Unauthorized use for unethical tracking or surveillance is strictly prohibited.
