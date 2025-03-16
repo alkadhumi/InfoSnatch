@@ -2,9 +2,17 @@ from flask import Flask, request, render_template, jsonify
 import requests
 import telebot
 import base64
+import os
+from dotenv import load_dotenv
 
-TOKEN = "7756384152:AAEpXocV1AfjgXBOpRE4vi-Q7WTTJWI6aW4"  # Replace with your Telegram bot token
-CHAT_ID = "1227177654"  # Replace with your Telegram Chat ID
+load_dotenv()  # Load environment variables from .env
+
+BOT_TOKEN = os.getenv("TOKEN")
+CHAT_ID = os.getenv("CHAT_ID")
+
+
+# TOKEN = "7756384152:AAEpXocV1AfjgXBOpRE4vi-Q7WTTJWI6aW4"  # Replace with your Telegram bot token
+# CHAT_ID = "1227177654"  # Replace with your Telegram Chat ID
 
 bot = telebot.TeleBot(TOKEN)
 app = Flask(__name__)
