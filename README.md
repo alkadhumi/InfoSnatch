@@ -38,10 +38,10 @@ CHAT_ID=your_telegram_chat_id
 python app.py
 ```
 
-📌 Usage
+## 📌 Usage
 - ✅ Deploy the Flask server.
 - ✅ Send the HTML link to the target.
 - ✅ When they open the page, their IP, location, user info, and camera capture will be sent to Telegram.
 
-⚠️ Disclaimer
+## ⚠️ Disclaimer
 This project is intended for educational and ethical hacking purposes only. The author does not take responsibility for any misuse. Always get consent before collecting any data.
