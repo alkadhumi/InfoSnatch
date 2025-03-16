@@ -9,11 +9,11 @@
 
 
 
-# InfoSnatch
+## 😈 InfoSnatch
 
 InfoSnatch is a powerful tool designed to gather real-time information about users, including their IP address, live location, device details, and even capture an image from their camera (with permission).
 
-## Features
+## 🎨 Features
 - ✅ **IP Address Tracking** - Retrieves the public IP of the user.
 - ✅ **Live Geolocation** - Fetches approximate location using IP-based geolocation.
 - ✅ **Device Information** - Captures browser and OS details.
