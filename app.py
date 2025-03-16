@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables from .env
 
-BOT_TOKEN = os.getenv("TOKEN")
+TOKEN = os.getenv("TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 
 
