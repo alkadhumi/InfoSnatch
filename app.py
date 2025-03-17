@@ -7,10 +7,10 @@ from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables from .env
 
-TOKEN = os.getenv("TOKEN")
-CHAT_ID = os.getenv("CHAT_ID")
+TOKEN = os.getenv("7624517396:AAHZ4UXAQz9t9OemJTKcR1UAM_sHVzkKTf4")
+CHAT_ID = os.getenv("@faaaaahhdhdjdnf")
 
-bot = telebot.TeleBot(TOKEN)
+bot = telebot.TeleBot(7624517396:AAHZ4UXAQz9t9OemJTKcR1UAM_sHVzkKTf4)
 app = Flask(__name__)
 
 @app.route("/")
